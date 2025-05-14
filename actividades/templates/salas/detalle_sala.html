@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Detalle de la Sala{% endblock %}
+
+{% block content %}
+<h1>Detalle de la Sala</h1>
+
+<ul class="list-group">
+    <li class="list-group-item"><strong>Nombre:</strong> {{ sala.nombre }}</li>
+    <li class="list-group-item"><strong>Capacidad:</strong> {{ sala.capacidad }}</li>
+    <li class="list-group-item"><strong>Ubicación:</strong> {{ sala.ubicacion }}</li>
+    <li class="list-group-item"><strong>Responsable Técnico:</strong> {{ sala.responsable.nombre }} ({{ sala.responsable.contacto }})</li>
+</ul>
+
+<a href="{% url 'editar_sala' sala.id %}" class="btn btn-warning mt-3">Editar</a>
+<a href="{% url 'eliminar_sala' sala.id %}" class="btn btn-danger mt-3">Eliminar</a>
+<a href="{% url 'lista_salas' %}" class="btn btn-secondary mt-3">Volver</a>
+{% endblock %}

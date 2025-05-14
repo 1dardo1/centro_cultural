@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Detalle de Usuario{% endblock %}
+
+{% block content %}
+<h1>Detalle de Usuario</h1>
+
+<ul class="list-group">
+    <li class="list-group-item"><strong>Nombre:</strong> {{ usuario.nombre }}</li>
+    <li class="list-group-item"><strong>Edad:</strong> {{ usuario.edad }}</li>
+    <li class="list-group-item"><strong>Email:</strong> {{ usuario.email }}</li>
+    <li class="list-group-item"><strong>Teléfono:</strong> {{ usuario.telefono }}</li>
+</ul>
+
+<a href="{% url 'editar_usuario' usuario.id %}" class="btn btn-warning mt-3">Editar</a>
+<a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-danger mt-3">Eliminar</a>
+<a href="{% url 'lista_usuarios' %}" class="btn btn-secondary mt-3">Volver</a>
+{% endblock %}

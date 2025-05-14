@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Usuarios Inscritos{% endblock %}
+
+{% block content %}
+<h1>Usuarios Inscritos</h1>
+
+<a href="{% url 'crear_usuario' %}" class="btn btn-primary mb-3">+ Nuevo Usuario</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.edad }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.telefono }}</td>
+            <td>
+                <a href="{% url 'detalle_usuario' usuario.id %}" class="btn btn-sm btn-info">Ver</a>
+                <a href="{% url 'editar_usuario' usuario.id %}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">No hay usuarios registrados.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Salas{% endblock %}
+
+{% block content %}
+<h1>Salas</h1>
+
+<a href="{% url 'crear_sala' %}" class="btn btn-primary mb-3">+ Nueva Sala</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Capacidad</th>
+            <th>Ubicación</th>
+            <th>Responsable</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sala in salas %}
+        <tr>
+            <td>{{ sala.nombre }}</td>
+            <td>{{ sala.capacidad }}</td>
+            <td>{{ sala.ubicacion }}</td>
+            <td>{{ sala.responsable.nombre }}</td>
+            <td>
+                <a href="{% url 'detalle_sala' sala.id %}" class="btn btn-sm btn-info">Ver</a>
+                <a href="{% url 'editar_sala' sala.id %}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{% url 'eliminar_sala' sala.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">No hay salas registradas.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

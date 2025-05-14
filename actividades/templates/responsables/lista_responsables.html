@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Responsables de Sala{% endblock %}
+{% block content %}
+<h1>Responsables de Sala</h1>
+<a href="{% url 'crear_responsable' %}" class="btn btn-primary mb-3">+ Nuevo Responsable</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Contacto</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for responsable in responsables %}
+        <tr>
+            <td>{{ responsable.nombre }}</td>
+            <td>{{ responsable.contacto }}</td>
+            <td>
+                <a href="{% url 'detalle_responsable' responsable.id %}" class="btn btn-sm btn-info">Ver</a>
+                <a href="{% url 'editar_responsable' responsable.id %}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{% url 'eliminar_responsable' responsable.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3">No hay responsables registrados.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

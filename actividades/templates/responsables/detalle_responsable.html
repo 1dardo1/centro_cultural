@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Detalle del Responsable{% endblock %}
+{% block content %}
+<h2>{{ responsable.nombre }}</h2>
+<p><strong>Contacto:</strong> {{ responsable.contacto }}</p>
+<a href="{% url 'editar_responsable' responsable.id %}" class="btn btn-warning">Editar</a>
+<a href="{% url 'eliminar_responsable' responsable.id %}" class="btn btn-danger">Eliminar</a>
+<a href="{% url 'lista_responsables' %}" class="btn btn-secondary">Volver</a>
+{% endblock %}
