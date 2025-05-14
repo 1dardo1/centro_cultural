@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Eliminar Inscripción{% endblock %}
+
+{% block content %}
+<h1>Eliminar inscripción</h1>
+<p>¿Estás seguro de que deseas eliminar al usuario <strong>{{ usuario.nombre }}</strong> de la actividad <strong>{{ actividad.nombre }}</strong>?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+    <a href="{% url 'listar_inscripciones' actividad.id %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
